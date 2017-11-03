@@ -10,7 +10,7 @@
 
                 <a href="/images/{{$selected_user->cv->path}}"><button>Prenesi</button></a>
 
-        @else
+            @else
 
                 Uporabnik še ni naložil CV-ja
 

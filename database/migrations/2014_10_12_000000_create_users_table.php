@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->index();
             $table->string('first_name')->default("");
             $table->string('last_name')->default("");
-            $table->string('company_id')->default(0);
+            $table->integer('company_id')->default(0);
             $table->string('telephone')->default("");
             $table->integer('cv_id')->default(0);
             $table->rememberToken();

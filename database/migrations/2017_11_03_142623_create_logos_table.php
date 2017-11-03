@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCVsTable extends Migration
+class CreateLogosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCVsTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_v_s', function (Blueprint $table) {
+        Schema::create('logos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('path');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateCVsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_v_s');
+        Schema::dropIfExists('logos');
     }
 }

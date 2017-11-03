@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\CV;
+use App\Logo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,23 +17,99 @@ class UpdateController extends Controller
 
         $user = User::findOrFail(Auth::id());
 
-        $input = $request->all();
+        if ($user->role->id == 1) {
 
-        if($file = $request->file('cv')) {
+            $input = $request->all();
 
-            $name = time() . "_" . $file->getClientOriginalName();
-            $file->move('images', $name);
+            if ($file = $request->file('cv')) {
+
+                $name = time() . "_" . $file->getClientOriginalName();
+                $file->move('images', $name);
 
 
-            $cv = CV::create(['path' => $name]);
+                $cv = CV::create(['path' => $name]);
 
-            $input['cv_id'] = $cv->id;
+                $input['cv_id'] = $cv->id;
 
+            }
+
+            $user->update($input);
+
+            return redirect("/uredi");
         }
 
-        $user->update($input);
+        elseif($user->role->id == 2) {
 
-        return redirect("/uredi");
+            $user->update([
+
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'telephone' => $request->input('telephone'),
+
+            ]);
+
+            if($request->input('company_name') &&
+                $request->input('company_address')) {
+
+                if($user->company_id == 0) {
+
+                    $logo_id = 0;
+                    if($file = $request->file('company_logo')) {
+
+                        $name = time() . "_" . $file->getClientOriginalName();
+                        $file->move('images', $name);
+
+
+                        $logo = Logo::create(['path' => $name]);
+
+                        $logo_id = $logo->id;
+
+                    }
+
+                    $company = Company::create([
+                       'company_name' => $request->input('company_name'),
+                        'company_address' => $request->input('company_address'),
+                        'logo_id' => $logo_id,
+                    ]);
+
+                    $user->update(['company_id' => $company->id]);
+
+                }
+
+                else {
+
+                    if($file = $request->file('company_logo')) {
+
+                        $name = time() . "_" . $file->getClientOriginalName();
+                        $file->move('images', $name);
+
+
+                        $logo = Logo::create(['path' => $name]);
+
+                        $logo_id = $logo->id;
+
+                    } else {
+
+                        $logo_id = Company::findOrFail($user->company_id)->company_logo_id;
+
+                    }
+
+                    $company = Company::findOrFail($user->company_id);
+                    $company->update([
+                        'company_name' => $request->input('company_name'),
+                        'company_address' => $request->input('company_address'),
+                        'logo_id' => $logo_id
+                    ]);
+                }
+
+            }
+
+            return redirect('/uredi');
+
+
+
+
+        }
 
     }
 

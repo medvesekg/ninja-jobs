@@ -541,7 +541,10 @@ select {
     flex-wrap: wrap;
 }
 
-
+.board img {
+    max-width: 100%;
+    max-height: 100%;
+}
 
 
 input[type="file"] {
