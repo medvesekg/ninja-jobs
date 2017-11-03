@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @if($user->company)
+
     <div style="width:100%">
         <form style="width:100%;" method="post">
             {{csrf_field()}}
@@ -14,4 +16,11 @@
             <button type="submit" class="btn-ninja">Objavi</button>
         </form>
     </div>
+
+    @else
+
+    <p>Preden lahko objaviš oglas, prosim izpolni podatke o svojem podjetju - <a href="/uredi">Uredi profil</a></p>
+
+    @endif
+
 @endsection

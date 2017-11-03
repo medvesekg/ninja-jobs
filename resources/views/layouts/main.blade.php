@@ -99,7 +99,6 @@
                 <br>
                 <br>
                 <br>
-                <br>
             </div>
         @endif
     </div>
@@ -145,13 +144,22 @@
 <div class="form-modal login-form" id="mobile-menu-modal">
     <p><a href="/">Domov</a></p>
     <br>
-    <p><a href="/seznam">Seznam uporabnikov</a></p>
+    <p><a href="/uredi">Uredi profil</a></p>
     <br>
-    <p class="inactive-link">Objavi delovno mesto</p>
+    <p>
+        <a href="/seznam">
+            @if($user->role->id == 1)
+                Seznam delodajalcev
+            @elseif($user->role->id == 2)
+                Seznam iskalcev zaposlitve
+            @endif
+
+        </a>
+    </p>
     <br>
-    <p class="inactive-link">Preglej prijave</p>
-    <br>
-    <p class="inactive-link">Uredi profil</p>
+    @if($user->role->id == 2)
+        <p><a href="/objavidelovnomesto">Objavi delovno mesto</a></p>
+    @endif
     <br>
     <form method="post" action="{{route('logout')}}">
         {{csrf_field()}}

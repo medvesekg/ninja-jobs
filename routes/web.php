@@ -37,3 +37,5 @@ Route::get('/uredi', 'NinjaController@uredi');
 
 Route::post('/uredi', 'UpdateController@uredi');
 
+
+
