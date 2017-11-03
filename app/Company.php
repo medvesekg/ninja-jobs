@@ -13,4 +13,8 @@ class Company extends Model
     public function logo() {
         return $this->belongsTo('App\Logo');
     }
+
+    public function user() {
+        return $this->hasOne('App\User');
+    }
 }

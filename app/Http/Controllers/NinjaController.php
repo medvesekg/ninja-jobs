@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Job;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,8 @@ class NinjaController extends Controller
     {
 
         $user = Auth::user();
-        return view('frontpage')->with(['user' => $user]);
+        $jobs = Job::all();
+        return view('frontpage')->with(['user' => $user, 'jobs' => $jobs]);
     }
 
     public function seznam($id = null)
@@ -26,8 +28,12 @@ class NinjaController extends Controller
             return view('user_profile')->with(['selected_user' => $selected_user, 'user' => $user]);
         }
 
-
-        $all_users = User::all();
+        if($user->role->id == 1) {
+            $all_users = User::all()->where('role_id', 2);
+        }
+        elseif($user->role->id == 2) {
+            $all_users = User::all()->where('role_id', 1);
+        }
         return view('seznam')->with(['user' => $user, 'all_users' => $all_users]);
 
     }
@@ -51,5 +57,7 @@ class NinjaController extends Controller
         return view('uredi_profil')->with(['user'=>$user]);
 
     }
+
+
 
 }

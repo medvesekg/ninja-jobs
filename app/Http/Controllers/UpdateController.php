@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\CV;
+use App\Job;
 use App\Logo;
 use App\User;
 use Illuminate\Http\Request;
@@ -112,5 +113,18 @@ class UpdateController extends Controller
         }
 
     }
+
+    public function ustvari(Request $request) {
+
+        $input = $request->all();
+
+        $input['company_id'] = Auth::user()->company->id;
+
+        Job::create($input);
+
+        return redirect("/");
+
+    }
+
 
 }

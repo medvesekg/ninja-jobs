@@ -552,6 +552,21 @@ input[type="file"] {
 }
 
 
+textarea {
+    width: 100%;
+    background: #666666;
+}
+
+textarea:focus {
+    outline: none;
+    border: 1px solid #1ABC9C;
+    outline: none;
+    border-bottom: 1px solid #1ABC9C;
+    padding: 3px;
+    color: #1ABC9C;
+}
+
+
 
 @media (max-width: 845px) {
 

@@ -31,6 +31,9 @@ Route::get('/seznam/{id}', 'NinjaController@seznam');
 
 Route::get('/objavidelovnomesto', 'NinjaController@ustvari');
 
+Route::post('/objavidelovnomesto', 'UpdateController@ustvari');
+
 Route::get('/uredi', 'NinjaController@uredi');
 
 Route::post('/uredi', 'UpdateController@uredi');
+
