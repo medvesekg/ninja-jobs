@@ -118,3 +118,21 @@
         <a href="#">&lt;&lt;</a> 1 <a href="#">&gt;&gt;</a>
     </div>
     @endsection
+
+@section('left-menu')
+
+    <div class="menu-box">
+        <h2>Iskanje</h2>
+        <form>
+            <input type="text">
+            <p><input type="checkbox"> Filter</p>
+            <p><input type="checkbox"> Filter</p>
+            <p><input type="checkbox"> Filter</p>
+            <p><input type="checkbox"> Filter</p>
+            <p><input type="checkbox"> Filter</p>
+            <p><input type="checkbox"> Filter</p>
+            <input type="submit" value="Išči" class="btn-ninja">
+        </form>
+    </div>
+
+@endsection

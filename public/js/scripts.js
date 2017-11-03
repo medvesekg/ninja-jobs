@@ -71,7 +71,7 @@ if (signUpButton) {
 
 loginModalLoginCorner.onclick = function() {
 
-    if (signUpFormModal.classList.contains('signup-form')) {
+    if (modalLoginForm.style.display = "none") {
 
         signUpFormModal.classList.remove('signup-form');
         signUpFormModal.classList.add('login-form');
@@ -85,7 +85,7 @@ loginModalLoginCorner.onclick = function() {
 
 signupModalLoginCorner.onclick = function() {
 
-    if(signUpFormModal.classList.contains('login-form')) {
+    if( modalSignupForm.style.display = "none") {
 
         signUpFormModal.classList.remove('login-form');
         signUpFormModal.classList.add('signup-form');

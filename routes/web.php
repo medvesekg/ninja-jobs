@@ -26,3 +26,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'NinjaController@frontpage');
 
 Route::get('/seznam', 'NinjaController@seznam');
+
+Route::get('/seznam/{id}', 'NinjaController@seznam');
+
+Route::get('/objavidelovnomesto', 'NinjaController@ustvari');
+
+Route::get('/uredi', 'NinjaController@uredi');
+
+Route::post('/uredi', 'UpdateController@uredi');

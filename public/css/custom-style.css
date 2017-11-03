@@ -153,7 +153,7 @@ body {
  
     display: inline-flex;
     max-width: 800px;
-    min-width: 60%;
+    width: 60%;
     flex-grow: 2;
     border: 1px solid black;
     margin: 0 auto;
@@ -175,6 +175,7 @@ body {
     width: 180px;
     padding: 10px 20px 10px 20px;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+
     transition: 0.25s linear;
     cursor: pointer;
     margin-bottom: 50px;
@@ -447,14 +448,14 @@ body {
 }
 
 .form-modal.visible {
-    padding: 100px 50px;
+    padding: 40px 50px 40px 50px;
     max-width: 100%;
-    height: 450px;
+    height: 500px;
     width: 500px;
     overflow: visible;
 }
 
-.form-modal input {
+.form-modal input, .board input {
     display: block;
     margin: 0 auto;
     margin-bottom: 20px;
@@ -468,12 +469,12 @@ body {
     width: 100%;
 }
 
-.form-modal input:focus {
+.form-modal input:focus, .board input:focus {
     outline: none;
     border-bottom: 1px solid #1ABC9C;
 }
 
-.form-modal label {
+.form-modal label, .board label {
     display: block;
     text-align: left;
     font-size: 12px;
@@ -521,6 +522,32 @@ body {
 #mobile-menu-button {
     display: none;
 }
+
+select {
+    width: 100%;
+    height: 30px;
+}
+
+.polovica {
+    width: 49%;
+    flex-basis: 300px;
+
+}
+
+.board .main-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+
+input[type="file"] {
+    font-size: 12px;
+}
+
 
 
 @media (max-width: 845px) {

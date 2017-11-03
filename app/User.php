@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password',
+        'email', 'password', 'role_id', 'first_name', 'last_name', 'telephone', 'cv_id'
     ];
 
     /**
@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role() {
+        return $this->belongsTo('App\Role');
+    }
+
+    public function cv() {
+        return $this->belongsTo('App\CV');
+    }
 }
