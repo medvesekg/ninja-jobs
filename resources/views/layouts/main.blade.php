@@ -143,6 +143,7 @@
 <!-- mobile menu modal -->
 <div class="form-modal login-form" id="mobile-menu-modal">
     <p><a href="/">Domov</a></p>
+    @if($user)
     <br>
     <p><a href="/uredi">Uredi profil</a></p>
     <br>
@@ -165,6 +166,7 @@
         {{csrf_field()}}
         <button type="submit">Odjava</button>
     </form>
+    @endif
 </div>
 
 

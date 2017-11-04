@@ -22,10 +22,10 @@
 
     @endforeach
 
-
     <div class="pagination-corner">
-        <a href="#">&lt;&lt;</a> 1 <a href="#">&gt;&gt;</a>
+        <a href="{{$jobs->previousPageUrl()}}">&lt;&lt;</a> {{$jobs->currentPage()}} <a href="{{$jobs->nextPageUrl()}}">&gt;&gt;</a>
     </div>
+
     @endsection
 
 @section('left-menu')

@@ -15,7 +15,7 @@ class NinjaController extends Controller
     {
 
         $user = Auth::user();
-        $jobs = Job::all();
+        $jobs = Job::paginate(6);
         return view('frontpage')->with(['user' => $user, 'jobs' => $jobs]);
     }
 
